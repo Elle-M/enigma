@@ -24,6 +24,7 @@ class Enigma
       :C => offset[2],
       :D => offset[3] }
       # missing something but what
+      # need to seperate numbers 
   end
 end
   # def encrypt(message, key, date)
