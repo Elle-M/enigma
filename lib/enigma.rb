@@ -18,7 +18,7 @@ class Enigma
   end
 
   def offsets
-    offset = [Math.sqrt(@date).to_i].slice(-1, 4)
+    offset = [@date * 2].slice(-1, 4)
     { :A => offset[0],
       :B => offset[1],
       :C => offset[2],
