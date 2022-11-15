@@ -2,30 +2,34 @@ class Enigma
   attr_reader :message,
               :key,
               :date,
-              :ciphertext
+              
   def initialize(attributes)
     @message = attributes[:message]
     @key = attributes[:key]
     @date = attributes[:date]
-    @ciphertext = attributes[:ciphertext]
   end
 
+  # methods i need for encryption
   def keys
-    { :A => @key.slice(0, 2),
-      :B => @key.slice(1, 2),
-      :C => @key.slice(2, 2),
-      :D => @key.slice(3, 2) }
+    { :A => @key.slice(0, 2).join,
+      :B => @key.slice(1, 2).join,
+      :C => @key.slice(2, 2).join,
+      :D => @key.slice(3, 2).join }
   end
 
   def offsets
-    offset = [Math.sqrt(@date).to_i].slice(-1, 4)
-    { :A => offset[0],
-      :B => offset[1],
-      :C => offset[2],
-      :D => offset[3] }
+    offset = [(@date ** 2)]
+    # offset = square.slice(-1, 4)
+    { :A => offset.split.slice(-1, 4).first,
+      :B => offset.slice(-1, 4),
+      :C => offset.slice(-1, 4),
+      :D => offset.slice(-1, 4)}
       # missing something but what
+      # return the whole squared number...slice isn't working, why?
   end
 end
+
+# methods for enigma class
   # def encrypt(message, key, date)
 
   # end
