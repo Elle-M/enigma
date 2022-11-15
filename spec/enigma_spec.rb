@@ -2,9 +2,9 @@ require 'date'
 require './lib/Enigma'
 
 RSpec.describe Enigma do
-  let(:enigma) { Enigma.new({  :message => "test" , 
+  let(:enigma) { Enigma.new({  :message => "hello world" , 
         :key => [0,1,2,3,4,5,6,7,8,9].sample(5), 
-        :date => Date.today.strftime('%m%d%y').to_i, 
+        :date => Date.today.strftime('%m%d%y'), 
         :ciphertext => "test"
         }) }
 
@@ -13,7 +13,7 @@ RSpec.describe Enigma do
      
       expect(enigma).to be_an_instance_of(Enigma)
       expect(enigma.key.length).to eq(5)
-      expect(enigma.date).to eq(Date.today.strftime('%m%d%y').to_i) 
+      expect(enigma.date).to eq(Date.today.strftime('%m%d%y')) 
       #has a to be a better way to test that
     end
   end
